@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Results summary component</title>
+
+</head>
+<body>
+<main id="root">
+  <div class="flex">
+
+    <div class="result">
+      <h1>Your Result</h1>
+      <div class="circle">
+        <h2>76</h2> 
+        <span>of 100</span>
+      </div>
+
+      <h3>Great</h3>
+      <p>You scored higher than 65% of the people who have taken these tests.
+      </p>
+    </div>
+
+    <div class="summary">
+      <h2>Summary</h2>
+      <ul class="grid">
+      </ul>
+      
+      <button>
+      Continue
+      </button>
+    </div>
+
+  </div>
+  <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://github.com/blacksnowsoon">gharieb khalifa</a>.
+  </div>
+</main>
+</body>
+<script>
+  const ul = document.querySelector('.grid')
+  const liTemplet =(object)=>{ return  `<li>
+          <img src="${object.icon}" alt="${object.category} icon">
+          <p>${object.category}</p>
+          <p><span>${object.score}</span> <span>/ 100</i></p>
+        </li>`}
+  
+  
+  let data ;
+  fetch('./data.json')
+  .then(res => res.json())
+  .then(data => {
+    
+    for (const object of data) {
+      ul.innerHTML += liTemplet(object)
+    }
+    const div = document.querySelector('.summary')
+  })
+  
+  
+</script>
+</html>
